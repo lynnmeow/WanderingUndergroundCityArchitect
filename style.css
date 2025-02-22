@@ -1,0 +1,753 @@
+/* 流浪地下城管理模拟器 - 样式表 */
+/* 版本：1.2 - 包含完整响应式布局 */
+
+/* ================== 基础设置 ================== */
+:root {
+    --bg-dark: #0a0a0a;          /* 主背景色 */
+    --bg-light: #1a1a1a;         /* 次级背景 */
+    --text-primary: #ffffff;     /* 主要文字 */
+    --accent-yellow: #ffd700;    /* 强调黄 */
+    --accent-orange: #ff6b00;    /* 强调橙 */
+    --accent-red: #ff4500;       /* 强调红 */
+    --border-color: #333333;     /* 边框颜色 */
+    --progress-start: #ff6b00;   /* 进度条起始色 */
+    --progress-end: #ff0000;     /* 进度条结束色 */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Microsoft Yahei', 'PingFang SC', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================== 通用样式 ================== */
+.screen {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+button {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* ================== 开始界面 ================== */
+#startScreen {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.start-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--accent-yellow);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.plot-text {
+    color: #cccccc;;
+    line-height: 1.8;
+    margin: 20px 0 100px;
+}
+
+.name-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 100px;
+}
+
+.name-input-group {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid var(--accent-yellow);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    margin: 10px 0;
+}
+
+#cityName {
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    min-width: 250px;
+    outline: none;
+}
+
+.suffix-text {
+    padding: 0 15px;
+    color: var(--accent-yellow);
+    font-size: 1.1rem;
+}
+
+.start-btn {
+    background: linear-gradient(45deg, var(--accent-orange), var(--accent-red));
+    color: white;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+
+.start-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+}
+
+/* ================== 游戏主界面 ================== */
+#gameScreen {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.city-header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--border-color);
+}
+
+#fullCityName {
+    font-size: 2rem;
+    color: var(--accent-yellow);
+    margin-bottom: 10px;
+}
+
+.current-year {
+    color: var(--accent-orange);
+    font-size: 1.1rem;
+}
+
+/* 时间进度条 */
+.time-progress-container {
+    margin: 20px 0;
+}
+
+.progress-bar {
+    height: 15px;
+    background: var(--bg-light);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--progress-start), var(--progress-end));
+    transition: width 0.1s linear;
+}
+
+.year-text {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* 主内容区 */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* 属性面板 */
+.attributes-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    background: var(--bg-light);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.attribute-item {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    position: relative;
+    min-height: 80px;
+}
+
+.attribute-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+}
+
+.danger::after { background: var(--accent-red); }
+.warning::after { background: var(--accent-orange); }
+
+.attr-name {
+    color: #cccccc;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+}
+
+.attr-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* 控制面板 */
+.control-panel {
+    background: var(--bg-light);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.strategy-section {
+    margin-bottom: 25px;
+}
+
+.strategy-section h3 {
+    color: var(--accent-yellow);
+    margin-bottom: 15px;
+}
+
+.strategy-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.strategy-btn {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.strategy-btn.active {
+    background: var(--accent-orange);
+    color: black;
+    border-color: var(--accent-yellow);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+}
+
+/* 人口滑块 */
+.birth-control-section {
+    margin-top: 20px;
+}
+
+.custom-slider {
+    width: 100%;
+    height: 8px;
+    background: var(--bg-dark);
+    border-radius: 4px;
+    -webkit-appearance: none;
+    margin-top: 10px;
+}
+
+.custom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-yellow);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* 信息日志 */
+.log-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.log-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-filter {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.log-content {
+    padding: 15px;
+    max-height: 330px;
+    overflow-y: auto;
+    scrollbar-color: var(--accent-orange) var(--bg-light);
+    background-color: var(--bg-light);
+    overflow-x: hidden;
+}
+
+/* WebKit滚动条 */
+.log-content::-webkit-scrollbar {
+    width: 6px; /* 更细的滚动条 */
+    height: 6px; /* 水平滚动条高度 */
+}
+
+.log-content::-webkit-scrollbar-thumb {
+    border: 1px solid rgba(255,255,255,0.2); /* 添加边框提升可视性 */
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.2); /* 添加内阴影 */
+}
+
+.log-content::-webkit-scrollbar-track {
+    background: linear-gradient(
+        to right,
+        rgba(255,165,0,0.1) 0%,
+        rgba(255,165,0,0.05) 50%,
+        rgba(255,165,0,0.1) 100%
+    );
+    border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Firefox滚动条轨道 */
+.log-content {
+    background-image: linear-gradient(
+        to right,
+        rgba(255,165,0,0.1) 0%,
+        rgba(255,165,0,0.05) 50%,
+        rgba(255,165,0,0.1) 100%
+    );
+    background-attachment: local;
+}
+
+.log-entry {
+    position: relative;
+    padding: 12px 15px;
+    margin: 8px 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    animation: slideIn 0.3s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    max-width: 100%;
+    word-break: break-word;
+    white-space: normal !important;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+}
+
+.log-entry.warning {
+    background: rgba(255, 69, 0, 0.1);
+    border-left: 3px solid var(--accent-red);
+    animation: pulseWarning 1s infinite;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulseWarning {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* ================== 结局界面 ================== */
+#endScreen {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.ending-content {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ending-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.ending-title {
+    color: var(--accent-yellow);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.ending-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.game-summary {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 25px;
+    margin: 20px 0;
+}
+
+.summary-section h3 {
+    color: var(--accent-yellow);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.final-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.final-stats p {
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.final-stats p::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.final-stats p.positive::after {
+    background-color: var(--accent-yellow);
+}
+
+.final-stats p.negative::after {
+    background-color: var(--accent-red);
+}
+
+.restart-btn {
+    background: linear-gradient(45deg, var(--accent-orange), var(--accent-red));
+    color: white;
+    padding: 15px 50px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.restart-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ================== 工具提示 ================== */
+.tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    pointer-events: none;
+    display: none;
+    z-index: 1000;
+    max-width: 300px;
+}
+
+/* ================== 响应式设计 ================== */
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    #fullCityName {
+        font-size: 1.5rem;
+    }
+
+    .attributes-panel {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .attribute-item {
+        min-height: 70px;
+        padding: 10px;
+    }
+
+    .attr-value {
+        font-size: 1.1rem;
+    }
+
+    .strategy-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .log-content {
+        max-height: 300px;
+    }
+
+    .countdown-container {
+        margin: 0 10px 8px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #cityName {
+        min-width: 180px;
+        font-size: 1rem;
+    }
+
+    .attributes-panel {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .attr-name {
+        font-size: 0.8rem;
+    }
+
+    .attr-value {
+        font-size: 1rem;
+    }
+
+    .strategy-btn {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    .strategy-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .log-content {
+        max-height: 250px;
+    }
+}
+
+/* ================== 页脚 ================== */
+.global-footer {
+    position: relative;
+    z-index: 10;
+    padding: 15px;
+    background: var(--bg-dark);
+    color: #666;
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.global-footer p {
+    margin: 5px 0;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ================== 滚动条优化修复 ================== */
+.log-content {
+    scrollbar-color: var(--accent-orange) var(--bg-light); /* 统一滚动条颜色 */
+    background-image: none; /* 移除渐变背景 */
+    background-color: var(--bg-light); /* 使用统一背景色 */
+}
+
+.log-content::-webkit-scrollbar-thumb {
+    transition: all 0.5s ease; /* 延长过渡时间 */
+}
+
+.log-content::-webkit-scrollbar-thumb:hover {
+    width: 6px; /* 保持宽度不变 */
+    background: var(--accent-yellow);
+}
+
+/* 修复进度条完成时的闪烁问题 */
+@keyframes fadeOutScrollbar {
+    to { opacity: 0.5; }
+}
+
+.year-progress-complete .log-content::-webkit-scrollbar-thumb {
+    animation: fadeOutScrollbar 1s forwards;
+}
+
+/* 修复进度条完成时的布局抖动 */
+.year-progress-complete .log-content {
+    overflow-y: scroll; /* 保持滚动条占位 */
+}
+
+@keyframes stableScrollbar {
+    to { opacity: 1; }
+}
+
+.year-progress-complete .log-content::-webkit-scrollbar-thumb {
+    animation: stableScrollbar 0.5s forwards;
+}
+
+/* 游戏总结样式 */
+.game-summary {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    color: var(--text-primary);
+}
+
+.summary-section h3 {
+    color: var(--accent-yellow);
+    margin-bottom: 15px;
+}
+
+.final-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.final-stats p {
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    text-align: left;
+}
+
+/* 倒计时样式 */
+.countdown-container {
+    margin: 15px;
+    padding: 10px;
+    margin-bottom: -10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* 主标题样式 */
+.main-title {
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+/* 内容区域容器 */
+.countdown-content {
+    position: relative;
+    padding-left: 90px; /* 为红条预留位置 */
+    margin-left: 90px; /* 与主标题的间距 */
+}
+
+/* 红色装饰条 */
+.red-bar {
+    position: absolute;
+    left: 0;
+    top: 62%;
+    transform: translateY(-50%); /* 垂直居中 */
+    width: 8px;
+    height: calc(72% + 8px); /* 动态高度补偿 */
+    background-color: var(--accent-red);
+}
+
+/* 倒计时文本组 */
+.countdown-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: -70px; 
+}
+
+/* 中文行样式 */
+.countdown-text-line {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.countdown-text-cn {
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 0; /* 进一步降低行高 */
+    white-space: nowrap;
+    margin: -1px 0; /* 增加负边距补偿 */
+    padding: 1px 0; /* 防止文字裁剪 */
+    position: relative;
+    z-index: 1;
+}
+
+.countdown-number {
+    color: var(--accent-red);
+    font-size: 36px;
+    font-weight: bold;
+    min-width: 90px;
+    text-align: center;
+}
+
+/* 英文文本组样式 */
+.countdown-text-group-en {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.countdown-line-en {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.countdown-text-en {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-top: -4px;
+    white-space: nowrap;
+}
+
+.countdown-number-en {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 50px;
+    margin-top: -6px;
+    text-align: center;
+}

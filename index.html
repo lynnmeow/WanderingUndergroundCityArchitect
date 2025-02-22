@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流浪地下城管理模拟器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="gameContainer" style="min-height: calc(100vh - 60px);">
+        <!-- 开始界面 -->
+        <div id="startScreen" class="screen" style="display: block;">
+            <div class="start-header">
+                <h1>🌍 地下城管理模拟器</h1>
+                <p class="plot-text">
+                    </p>地球已经起航，</p>
+                    </p>然而这只是流浪之旅的开端……</p>
+                    </p>请妥善规划2500年间地下城的发展策略。</p>
+            </div>
+            
+            <div class="name-input-container">
+                <div class="name-input-group">
+                    <input type="text" id="cityName" 
+                           placeholder="请输入地下城名称"
+                           maxlength="20">
+                    <span class="suffix-text">地下城</span>
+                </div>
+                <button class="start-btn" onclick="startGame()">🚀 启动地下城</button>
+            </div>
+        </div>
+
+        <!-- 游戏主界面 -->
+        <div id="gameScreen" class="screen" style="display: none;">
+            <div class="city-header">
+                <h2 id="fullCityName"></h2>
+                <div class="current-year">
+                    当前年份：<span id="currentYear">2165</span>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <!-- 左侧综合面板 -->
+                <div class="left-panel">
+                    <!-- 时间进度条 -->
+                    <div class="time-progress-container">
+                        <div class="progress-bar">
+                            <div id="yearProgress" class="progress-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 控制面板（建设策略 + 人口调控） -->
+                    <div class="control-panel">
+                        <div class="strategy-section">
+                            <h3>📋 建设策略</h3>
+                            <div id="strategyButtons" class="strategy-buttons"></div>
+                        </div>
+
+                        <div class="birth-control-section">
+                            <h3>👶 人口调控系数：<span id="birthRateValue">10</span></h3>
+                            <input type="range" id="birthRate" 
+                                   min="0" max="30" value="10"
+                                   class="custom-slider">
+                        </div>
+                    </div>
+
+                    <!-- 属性面板 -->
+                    <div class="attributes-panel">
+                        <div class="attribute-item danger" data-attribute="peopleSupport">
+                            <div class="attr-name">❤️ 民心</div>
+                            <div class="attr-value">50.00</div>
+                        </div>
+                        <div class="attribute-item danger" data-attribute="security">
+                            <div class="attr-name">🛡️ 安全</div>
+                            <div class="attr-value">50.00</div>
+                        </div>
+                        <div class="attribute-item" data-attribute="civilization">
+                            <div class="attr-name">📚 文明</div>
+                            <div class="attr-value">90.00</div>
+                        </div>
+                        <div class="attribute-item warning" data-attribute="resources">
+                            <div class="attr-name">⛏️ 资源</div>
+                            <div class="attr-value">20,000,000</div>
+                        </div>
+                        <div class="attribute-item warning" data-attribute="population">
+                            <div class="attr-name">👥 人口</div>
+                            <div class="attr-value">1,000,000</div>
+                        </div>
+                        <div class="attribute-item" data-attribute="researchLevel">
+                            <div class="attr-name">🔬 科研等级</div>
+                            <div class="attr-value">1</div>
+                        </div>
+                        <div class="attribute-item" data-attribute="constructionLevel">
+                            <div class="attr-name">🏗️ 建设等级</div>
+                            <div class="attr-value">1</div>
+                        </div>
+                        <div class="attribute-item" data-attribute="talentLevel">
+                            <div class="attr-name">🎓 人才等级</div>
+                            <div class="attr-value">1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧日志面板 -->
+                <div class="log-panel">
+                    
+                    <div class="countdown-container">
+                        <div class="countdown-text-cn main-title">距离到达新家园</div>
+                        <div class="countdown-content">
+                            <div class="red-bar"></div>
+                            <div class="countdown-text-group">
+                                <div class="countdown-text-line">
+                                    <div class="countdown-text-cn">还剩</div>
+                                    <div class="countdown-number">2500</div>
+                                    <div class="countdown-text-cn">年</div>
+                                </div>
+                                <div class="countdown-text-group-en">
+                                    <div class="countdown-text-en">REACH ITS NEW ORBIT</div>
+                                    <div class="countdown-line-en">
+                                        <div class="countdown-text-en">IN</div>
+                                        <div class="countdown-number-en">2500</div>
+                                        <div class="countdown-text-en">YEARS</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="log-header">
+                        <h3>📜 事件日志</h3>
+                    </div>
+                    
+                    <div id="gameLog" class="log-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结局界面 -->
+        <div id="endScreen" class="screen" style="display: none;">
+            <div class="ending-content">
+                <h2 id="endingTitle"></h2>
+                <div id="endingDescription" class="ending-description"></div>
+                <button onclick="location.reload()" class="restart-btn">🔄 重新开始</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="global-footer">
+        <p>*原作《流浪地球》系列电影    导演 郭帆 原著 刘慈欣</p>
+        <p>*本游戏为个人练习所作，仅用于同好交流    游戏设计 鸿影</p>
+    </div>
+
+    <!-- 工具提示 -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <script src="game.js"></script>
+</body>
+</html>
