@@ -1,1 +1,2 @@
 # WanderingUndergroundCityArchitect
+中轻度挂机游戏，玩家将管理一座地下城，可以设置建设策略、新生人口调控系数。

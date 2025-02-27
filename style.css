@@ -6,9 +6,11 @@
     --bg-dark: #0a0a0a;          /* 主背景色 */
     --bg-light: #1a1a1a;         /* 次级背景 */
     --text-primary: #ffffff;     /* 主要文字 */
-    --accent-yellow: #ffd700;    /* 强调黄 */
+    --accent-yellow: #ecb626;    /* 强调黄 */
     --accent-orange: #ff6b00;    /* 强调橙 */
-    --accent-red: #ff4500;       /* 强调红 */
+    --accent-red: #fc4404;       /* 强调红 */
+    --accent-blue: #3498db;      /* 强调蓝 - 新增 */
+    --accent-green: #2ecc71;     /* 强调绿 - 新增 */
     --border-color: #333333;     /* 边框颜色 */
     --progress-start: #ff6b00;   /* 进度条起始色 */
     --progress-end: #ff0000;     /* 进度条结束色 */
@@ -137,13 +139,13 @@ button {
 }
 
 .current-year {
-    color: var(--accent-orange);
+    color: var(--accent-red);
     font-size: 1.1rem;
 }
 
 /* 时间进度条 */
 .time-progress-container {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .progress-bar {
@@ -227,7 +229,7 @@ button {
 }
 
 .strategy-section h3 {
-    color: var(--accent-yellow);
+    color: var(--text-primary);
     margin-bottom: 15px;
 }
 
@@ -250,7 +252,7 @@ button {
 .strategy-btn.active {
     background: var(--accent-orange);
     color: black;
-    border-color: var(--accent-yellow);
+    border-color: var(--accent-red);
     box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
 }
 
@@ -670,7 +672,7 @@ button {
 /* 内容区域容器 */
 .countdown-content {
     position: relative;
-    padding-left: 90px; /* 为红条预留位置 */
+    padding-left: 80px; /* 为红条预留位置 */
     margin-left: 90px; /* 与主标题的间距 */
 }
 
@@ -750,4 +752,97 @@ button {
     min-width: 50px;
     margin-top: -6px;
     text-align: center;
+}
+
+/* 新增样式 */
+.year-message {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0 0 12px 0;
+    min-height: 20px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.5s ease;
+    animation: messageFade 1.2s ease forwards;
+}
+
+@keyframes messageFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================== 随机事件样式 ================== */
+.log-entry.event {
+    position: relative;
+    padding: 15px;
+    margin: 12px 0;
+    background: rgba(10, 10, 10, 0.7);
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    border-left: 4px solid var(--accent-yellow);
+    animation: eventSlideIn 0.5s ease;
+    z-index: 2;
+    overflow: hidden;
+    word-wrap: break-word;
+    width: calc(100% - 10px);
+    max-width: 100%;
+    display: block !important; /* 确保显示 */
+}
+
+.log-entry.event.positive {
+    border-left: 4px solid var(--accent-green);
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.log-entry.event.negative {
+    border-left: 4px solid var(--accent-red);
+    background: rgba(255, 69, 0, 0.1);
+}
+
+.event-title {
+    font-weight: bold;
+    color: var(--accent-yellow);
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+    overflow: visible;
+}
+
+.event-description {
+    margin: 8px 0;
+    color: var(--text-primary);
+    line-height: 1.5;
+    opacity: 1;
+}
+
+.event-effect {
+    font-style: italic;
+    color: #aaa;
+    margin-top: 8px;
+    display: block;
+}
+
+.event-effect.positive {
+    color: var(--accent-green);
+}
+
+.event-effect.negative {
+    color: var(--accent-red);
+}
+
+@keyframes eventSlideIn {
+    from { 
+        transform: translateY(-20px);
+        opacity: 0; 
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1; 
+    }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>流浪地下城管理模拟器</title>
+    <title>地下城管理模拟器</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -43,6 +43,7 @@
                 <div class="left-panel">
                     <!-- 时间进度条 -->
                     <div class="time-progress-container">
+                        <div id="yearMessage" class="year-message"></div>
                         <div class="progress-bar">
                             <div id="yearProgress" class="progress-fill"></div>
                         </div>
@@ -56,7 +57,7 @@
                         </div>
 
                         <div class="birth-control-section">
-                            <h3>👶 人口调控系数：<span id="birthRateValue">10</span></h3>
+                            <h3>👶 人口调控系数：<span id="birthRateValue">1.0</span></h3>
                             <input type="range" id="birthRate" 
                                    min="0" max="30" value="10"
                                    class="custom-slider">
@@ -126,7 +127,7 @@
                     </div>
 
                     <div class="log-header">
-                        <h3>📜 事件日志</h3>
+                        <h3>📜 管理日志</h3>
                     </div>
                     
                     <div id="gameLog" class="log-content"></div>
@@ -146,13 +147,34 @@
 
     <!-- 页脚 -->
     <div class="global-footer">
-        <p>*原作《流浪地球》系列电影    导演 郭帆 原著 刘慈欣</p>
-        <p>*本游戏为个人练习所作，仅用于同好交流    游戏设计 鸿影</p>
+        <p>*荣誉属于原作《流浪地球》系列电影    导演 郭帆 原著 刘慈欣</p>
+        <p>*本游戏为个人练习所作，仅用于同好交流    游戏设计 鸿影  部分文案 异闻录</p>
     </div>
 
     <!-- 工具提示 -->
     <div id="tooltip" class="tooltip"></div>
 
+    <!-- 隐藏的调试按钮容器 -->
+    <div id="debugTools" style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 9999; background: rgba(0,0,0,0.8); padding: 10px; border-radius: 5px;">
+        <button id="triggerEventBtn" class="button-blue" style="font-size: 12px; padding: 5px 10px;">触发随机事件</button>
+    </div>
+
     <script src="game.js"></script>
+    <script>
+        // 调试模式控制
+        function enableDebugMode() {
+            document.getElementById('debugTools').style.display = 'block';
+            console.log('调试模式已启用');
+            
+            // 绑定调试按钮事件
+            document.getElementById('triggerEventBtn').addEventListener('click', function() {
+                const event = window.debugTriggerRandomEvent();
+                console.log('手动触发事件:', event);
+            });
+        }
+        
+        // 可以在控制台通过 enableDebugMode() 启用调试模式
+        window.enableDebugMode = enableDebugMode;
+    </script>
 </body>
 </html>

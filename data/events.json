@@ -1,0 +1,236 @@
+{
+  "events": [
+    {
+      "id": 101,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "陨石撞击地球",
+      "description": "突发！陨石撞击地球，地下城建筑耐久降低。",
+      "effect": "安全-2"
+    },
+    {
+      "id": 102,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "小行星撞击",
+      "description": "检测到一颗直径30公里的小行星有2%的概率击中地球！",
+      "effect": "民心-3"
+    },
+    {
+      "id": 103,
+      "condition": "none",
+      "probability": 0.025,
+      "name": "小型地震",
+      "description": "监测到436公里外发生小型地震。",
+      "effect": "安全-2,人口-2%"
+    },
+    {
+      "id": 104,
+      "condition": "none",
+      "probability": 0.015,
+      "name": "中型地震",
+      "description": "监测到169公里外发生中型地震，地下城震感明显。",
+      "effect": "安全-5,人口-5%"
+    },
+    {
+      "id": 105,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "大型地震",
+      "description": "监测到32公里处深处岩层断裂，震动可能波及地下城核心区！",
+      "effect": "安全-8,人口-8%"
+    },
+    {
+      "id": 106,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "火山爆发",
+      "description": "城市屏障已被地应力破坏，岩浆渗入！岩浆渗入！",
+      "effect": "安全-10,人口-10%"
+    },
+    {
+      "id": 107,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "农业灾害",
+      "description": "农场作物出现异常病变，产量大幅下降！",
+      "effect": "资源-1000000"
+    },
+    {
+      "id": 108,
+      "condition": "researchLevel>=70",
+      "probability": 0.005,
+      "name": "病毒传染",
+      "description": "出现未知病毒，传染性较强，好在控制及时，伤亡较小。",
+      "effect": "人口-2%"
+    },
+    {
+      "id": 109,
+      "condition": "researchLevel<=30",
+      "probability": 0.005,
+      "name": "病毒传染",
+      "description": "出现未知病毒，致死性较强，当前医学水平应对较为困难！",
+      "effect": "人口-10%"
+    },
+    {
+      "id": 110,
+      "condition": "researchLevel>30&&researchLevel<70",
+      "probability": 0.005,
+      "name": "病毒传染",
+      "description": "出现未知病毒，传染率极高！",
+      "effect": "人口-10%"
+    },
+    {
+      "id": 111,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "瘟疫蔓延",
+      "description": "出现未知病毒，传染率极高！",
+      "effect": "人口-10%"
+    },
+    {
+      "id": 112,
+      "condition": "researchLevel>50",
+      "probability": 0.005,
+      "name": "实验事故",
+      "description": "化学研究实验室发生有害物质泄漏！",
+      "effect": "人口-1%"
+    },
+    {
+      "id": 113,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "飞船派叛乱",
+      "description": "飞船派叛乱人员纷纷表示要坐飞船走，\"飞船万岁！\"",
+      "effect": "民心-3"
+    },
+    {
+      "id": 114,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "电磁风暴",
+      "description": "遭遇宇宙电磁辐射干扰，所有电子设备受损。",
+      "effect": "建设等级-1"
+    },
+    {
+      "id": 116,
+      "condition": "populationDeclineYears>=10",
+      "probability": 0.2,
+      "name": "生育权抗议",
+      "description": "民众抗议，要求放宽生育限制",
+      "effect": "民心-5"
+    },
+    {
+      "id": 117,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "宗教迷信",
+      "description": "最近兴起的民间宗教\"发动机神教\"，数千人聚集在广场，阻止工人对发动机进行维护，认为是一种亵渎。",
+      "effect": "建设等级-1"
+    },
+    {
+      "id": 118,
+      "condition": "currentYear<3165",
+      "probability": 0.005,
+      "name": "归航幻想",
+      "description": "部分民众认为，太阳氦闪已经结束，与其继续航行，不如返回太阳系，或许也可以生存？",
+      "effect": "民心-2"
+    },
+    {
+      "id": 119,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "就近栖息",
+      "description": "部分民众认为，与其继续航行，不如就近探测宜居星系。",
+      "effect": "民心-2"
+    },
+    {
+      "id": 120,
+      "condition": "researchLevel<=80",
+      "probability": 0.005,
+      "name": "外星信号干扰",
+      "description": "外星文明信号混入通信频道，接收者产生集体幻觉",
+      "effect": "科研等级-1"
+    },
+    {
+      "id": 121,
+      "condition": "researchLevel>50",
+      "probability": 0.005,
+      "name": "宇宙规律武器",
+      "description": "监测到宇宙规律武器痕迹，地球可能被降维打击。",
+      "effect": "科研等级-1"
+    },
+    {
+      "id": 122,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "食品变质",
+      "description": "食品加工厂混入变异菌种，库存蚯蚓干保质期缩短50%",
+      "effect": "资源-500000"
+    },
+    {
+      "id": 123,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "黑市暴动",
+      "description": "走私者囤积抗辐射药引发骚乱.",
+      "effect": "民心-1"
+    },
+    {
+      "id": 124,
+      "condition": "none",
+      "probability": 0.005,
+      "name": "岩层共振现象",
+      "description": "未知频率震动导致地下城建筑稳固性降低。",
+      "effect": "安全-2"
+    },
+    {
+      "id": 201,
+      "condition": "none",
+      "probability": 0.001,
+      "name": "文艺演出",
+      "description": "电工风走秀爆火，地下城居民对科研的关注提升。",
+      "effect": "人才等级+1"
+    },
+    {
+      "id": 202,
+      "condition": "none",
+      "probability": 0.01,
+      "name": "春节十二响",
+      "description": "地下城居民共度春节，处处欢声笑语。",
+      "effect": "民心+2"
+    },
+    {
+      "id": 203,
+      "condition": "none",
+      "probability": 0.01,
+      "name": "奥运会",
+      "description": "为了缓解人们的紧张情绪，联合政府举办了新一届奥运会。",
+      "effect": "民心+2"
+    },
+    {
+      "id": 204,
+      "condition": "none",
+      "probability": 0.01,
+      "name": "虚拟歌姬",
+      "description": "著名虚拟歌姬发布新作《太阳系往事》,勾起人们对过去的怀念与对未来的向往。",
+      "effect": "民心+2"
+    },
+    {
+      "id": 205,
+      "condition": "none",
+      "probability": 0.01,
+      "name": "虚拟歌姬",
+      "description": "著名虚拟歌姬翻唱经典歌曲《恭喜发财》，引领新一轮文艺复兴运动。",
+      "effect": "民心+2"
+    },
+    {
+      "id": 206,
+      "condition": "none",
+      "probability": 0.01,
+      "name": "粮食增产",
+      "description": "农场作物长势良好，实现粮食大丰收！",
+      "effect": "资源+1000000"
+    }
+  ]
+} 
